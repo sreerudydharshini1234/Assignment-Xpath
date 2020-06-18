@@ -1,0 +1,90 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class xpath {
+public static void main(String[] args)
+{
+	//To Set a System Path for Chromedriver
+	System.setProperty("webdriver.chrome.driver","./driver/chromedriver.exe");
+	//To open a new Chromedriver
+	ChromeDriver driver=new ChromeDriver();
+	//To load an URL
+	driver.get("http://leaftaps.com/opentaps");
+	
+	//Enter the Username using ID Locator
+	driver.findElementById("username").sendKeys("DemoSalesManager");
+	
+	//Enter the Password using ID Locator
+	driver.findElementById("password").sendKeys("crmsfa");
+	
+	//Click on LoginButton using Class Locator
+	driver.findElementByClassName("decorativeSubmit").click();
+	
+	//Click on CRM/SFA Link
+	driver.findElementByLinkText("CRM/SFA").click();
+	
+	//Click on Leads Button
+	driver.findElementByLinkText("Leads").click();
+	
+	//Click on Create Lead
+	driver.findElementByLinkText("Create Lead").click();
+	
+	//Enter Company Name
+	driver.findElementByXPath("//input[@id='createLeadForm_companyName']").sendKeys("iGate");
+	
+	//Enter First Name
+	driver.findElementByXPath("//input[@id='createLeadForm_firstName']").sendKeys("Rudy");
+	
+	//Enter LastName
+	driver.findElementByXPath("//input[@id='createLeadForm_lastName']").sendKeys("Gokul");
+	
+	//Select Source Dropdown Value
+   WebElement testDropDown= driver.findElementById("createLeadForm_dataSourceId");
+   Select dropdown=new Select(testDropDown);
+   dropdown.selectByIndex(4);
+   
+   //Select Marketing Campaign Site
+   WebElement testDropDown3=driver.findElementById("createLeadForm_marketingCampaignId");
+   Select dropdown4=new Select(testDropDown3);
+   dropdown4.selectByIndex(6);
+   
+   //Enter Value for Annual Revenue Field
+   driver.findElementByXPath("//input[@id='createLeadForm_annualRevenue']").sendKeys("10000");
+   
+   //Select Industry
+   WebElement testDropDown1=driver.findElementById("createLeadForm_industryEnumId");
+   Select dropdown1=new Select(testDropDown1);
+   dropdown1.selectByIndex(3);
+   
+   //Select Ownership
+   WebElement testDropDown2=driver.findElementById("createLeadForm_ownershipEnumId");
+   Select dropdown2=new Select(testDropDown2);
+   dropdown2.selectByVisibleText("S-Corporation");
+   
+   //Enter Description
+   driver.findElementById("createLeadForm_description").sendKeys("Selenium Automation Tester");
+   
+   //Select State/Province Value
+   WebElement testDropDown5=driver.findElementById("createLeadForm_generalStateProvinceGeoId");
+   Select dropdown5=new Select(testDropDown5);
+   dropdown5.selectByValue("TX");
+   
+   //Enter Email
+   driver.findElementById("createLeadForm_primaryEmail").sendKeys("rudy@gmail.com");
+   
+   //Enter Phone
+   driver.findElementById("createLeadForm_primaryPhoneNumber").sendKeys("987654321");
+   
+   //Click on Create Lead
+   driver.findElementByXPath("//input[@name='submitButton']").click();
+   
+   //Close the URL
+   driver.close();
+   
+   
+}
+}
+
+
